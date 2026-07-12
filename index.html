@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haryno Studio — Libretas, Stickers y Espejos Artesanales</title>
+  <meta name="description" content="Haryno Studio: libretas artesanales, agendas, stickers y espejos hechos con amor. Próximamente ropa y fotolibros.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons (versión bold): iconos de trazo grueso estilo brutalista -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ======= HEADER / NAV ======= -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="#inicio" class="nav__logo">
+        <span class="nav__logo-mark">RY</span>
+        <span class="nav__logo-text">HARYNO STUDIO</span>
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="#inicio" class="nav__link active">Inicio</a></li>
+        <li><a href="#productos" class="nav__link">Productos</a></li>
+        <li><a href="#proximamente" class="nav__link">Próximamente</a></li>
+        <li><a href="#historia" class="nav__link">Historia</a></li>
+        <li><a href="#contacto" class="nav__link nav__link--btn">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======= HERO ======= -->
+    <section class="hero" id="inicio">
+      <div class="hero__deco hero__deco--star"><i class="ph-bold ph-star"></i></div>
+      <div class="hero__deco hero__deco--flower"><i class="ph-bold ph-flower"></i></div>
+      <div class="hero__deco hero__deco--squiggle"><i class="ph-bold ph-scribble-loop"></i></div>
+
+      <div class="container hero__content">
+        <div class="hero__badge reveal">100% hecho a mano <i class="ph-bold ph-scissors"></i></div>
+        <h1 class="hero__title">
+          <span class="reveal">COSAS</span>
+          <span class="hero__title-accent reveal">BONITAS</span>
+          <span class="reveal">HECHAS A MANO<span class="cursor">_</span></span>
+        </h1>
+        <p class="hero__text reveal">
+          Somos <strong>Haryno Studio</strong>. Creamos libretas artesanales,
+          agendas, stickers y espejos con mucho cariño y un toque de caos creativo.
+        </p>
+        <div class="hero__actions reveal">
+          <a href="#productos" class="btn btn--primary">Ver productos →</a>
+          <a href="#historia" class="btn btn--secondary">Nuestra historia</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= MARQUEE ======= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>LIBRETAS ★ AGENDAS ★ STICKERS ★ ESPEJOS ★ ROPA ★ FOTOLIBROS ★&nbsp;</span>
+        <span>LIBRETAS ★ AGENDAS ★ STICKERS ★ ESPEJOS ★ ROPA ★ FOTOLIBROS ★&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ======= PRODUCTOS ======= -->
+    <section class="section" id="productos">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">Lo que hacemos</span>
+          <h2 class="section__title">NUESTROS PRODUCTOS</h2>
+        </div>
+
+        <div class="cards">
+          <a href="libretas.html" class="card card--red card--link reveal">
+            <div class="card__emoji"><i class="ph-bold ph-notebook"></i></div>
+            <h3 class="card__title">Libretas</h3>
+            <p class="card__text">Libretas artesanales con portadas únicas. Donde empezó todo — cosidas y armadas a mano, una por una.</p>
+            <span class="card__tag">Ver catálogo →</span>
+          </a>
+
+          <article class="card card--blue reveal">
+            <div class="card__emoji"><i class="ph-bold ph-calendar-check"></i></div>
+            <h3 class="card__title">Agendas</h3>
+            <p class="card__text">Organiza tu caos con estilo. Agendas personalizadas para que tus planes se vean tan bien como tú.</p>
+            <span class="card__tag">Organízate</span>
+          </article>
+
+          <article class="card card--orange reveal">
+            <div class="card__emoji"><i class="ph-bold ph-sticker"></i></div>
+            <h3 class="card__title">Stickers</h3>
+            <p class="card__text">Stickers con diseños originales para tu laptop, termo, libreta o donde tu corazón lo pida.</p>
+            <span class="card__tag">Pégalos donde sea</span>
+          </article>
+
+          <article class="card card--green reveal">
+            <div class="card__emoji"><i class="ph-bold ph-user-focus"></i></div>
+            <h3 class="card__title">Espejos</h3>
+            <p class="card__text">Espejos decorativos con personalidad. Para verte increíble y decorar tu espacio al mismo tiempo.</p>
+            <span class="card__tag">Nuevo ✦</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= PRÓXIMAMENTE ======= -->
+    <section class="section section--dark" id="proximamente">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag section__tag--invert">Spoiler alert 👀</span>
+          <h2 class="section__title section__title--light">PRÓXIMAMENTE...</h2>
+        </div>
+
+        <div class="soon">
+          <article class="soon__item reveal">
+            <span class="soon__emoji"><i class="ph-bold ph-t-shirt"></i></span>
+            <div>
+              <h3 class="soon__title">Ropa</h3>
+              <p class="soon__text">Playeras y más con diseños de Haryno Studio. Para que traigas puesto el arte.</p>
+            </div>
+            <span class="soon__badge">En camino</span>
+          </article>
+
+          <article class="soon__item reveal">
+            <span class="soon__emoji"><i class="ph-bold ph-camera"></i></span>
+            <div>
+              <h3 class="soon__title">Fotolibros</h3>
+              <p class="soon__text">Tus recuerdos favoritos en un libro artesanal hecho a mano. Regalo perfecto garantizado.</p>
+            </div>
+            <span class="soon__badge">En camino</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= HISTORIA ======= -->
+    <section class="section" id="historia">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">De dónde venimos</span>
+          <h2 class="section__title">NUESTRA HISTORIA</h2>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline__item reveal">
+            <div class="timeline__dot timeline__dot--red">1</div>
+            <div class="timeline__content">
+              <h3>El inicio: libretas <i class="ph-bold ph-notebook"></i></h3>
+              <p>Haryno Studio nació haciendo libretas artesanales. Cada una cosida y armada a mano, con portadas que cuentan historias.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item reveal">
+            <div class="timeline__dot timeline__dot--orange">2</div>
+            <div class="timeline__content">
+              <h3>Luego llegaron los stickers <i class="ph-bold ph-sticker"></i></h3>
+              <p>Quisimos que nuestros diseños vivieran en más lugares, así que empezamos a hacer stickers con ilustraciones originales.</p>
+            </div>
+          </div>
+
+          <div class="timeline__item reveal">
+            <div class="timeline__dot timeline__dot--green">3</div>
+            <div class="timeline__content">
+              <h3>Hoy: espejos <i class="ph-bold ph-user-focus"></i></h3>
+              <p>Actualmente creamos espejos decorativos llenos de personalidad. Y esto apenas comienza...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CONTACTO / CTA ======= -->
+    <section class="section cta" id="contacto">
+      <div class="container">
+        <div class="cta__box reveal">
+          <h2 class="cta__title">¿QUIERES ALGO ÚNICO?</h2>
+          <p class="cta__text">Escríbenos y hagamos realidad tu pedido personalizado. Sin compromiso, con mucho estilo.</p>
+          <div class="cta__actions">
+            <a href="mailto:hola@harynostudio.com" class="btn btn--primary">Escríbenos <i class="ph-bold ph-envelope-simple"></i></a>
+            <a href="https://www.instagram.com/haryno.studio" target="_blank" rel="noopener" class="btn btn--secondary">Instagram <i class="ph-bold ph-instagram-logo"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="footer__logo">RY</span>
+        <p>HARYNO STUDIO © 2026<br>Hecho a mano con <i class="ph-bold ph-heart"></i></p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#proximamente">Próximamente</a></li>
+        <li><a href="#historia">Historia</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

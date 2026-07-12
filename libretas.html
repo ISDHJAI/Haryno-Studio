@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libretas — Haryno Studio</title>
+  <meta name="description" content="Catálogo de libretas artesanales de Haryno Studio. Diseños únicos hechos a mano. $189.00 MXN.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons (versión bold): iconos de trazo grueso estilo brutalista -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ======= HEADER / NAV ======= -->
+  <header class="header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-mark">RY</span>
+        <span class="nav__logo-text">HARYNO STUDIO</span>
+      </a>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul class="nav__menu" id="nav-menu">
+        <li><a href="index.html" class="nav__link">Inicio</a></li>
+        <li><a href="index.html#productos" class="nav__link">Productos</a></li>
+        <li><a href="index.html#proximamente" class="nav__link">Próximamente</a></li>
+        <li><a href="index.html#historia" class="nav__link">Historia</a></li>
+        <li><a href="index.html#contacto" class="nav__link nav__link--btn">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ======= ENCABEZADO DEL CATÁLOGO ======= -->
+    <section class="catalogo-hero">
+      <div class="container">
+        <a href="index.html#productos" class="btn btn--secondary catalogo-hero__volver">← Volver</a>
+        <div class="section__header">
+          <span class="section__tag">Catálogo <i class="ph-bold ph-notebook"></i></span>
+          <h1 class="section__title">LIBRETAS ARTESANALES</h1>
+          <p class="catalogo-hero__texto">
+            Diseños únicos, cosidos y armados a mano.
+            Elige tu favorita — o pide un diseño personalizado.
+          </p>
+          <div class="catalogo-hero__precio">
+            <span class="precio__cantidad">$189.00</span>
+            <span class="precio__moneda">MXN c/u</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= CINTA ======= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>HECHAS A MANO ★ DISEÑOS ÚNICOS ★ $189.00 MXN ★ PERSONALIZABLES ★&nbsp;</span>
+        <span>HECHAS A MANO ★ DISEÑOS ÚNICOS ★ $189.00 MXN ★ PERSONALIZABLES ★&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ======= GRID DEL CATÁLOGO (se llena con JS) ======= -->
+    <section class="section">
+      <div class="container">
+        <div class="catalogo" id="catalogo"></div>
+      </div>
+    </section>
+
+    <!-- ======= CTA ======= -->
+    <section class="section cta" id="contacto">
+      <div class="container">
+        <div class="cta__box">
+          <h2 class="cta__title">¿TE ENAMORASTE DE UNA?</h2>
+          <p class="cta__text">Mándanos el número del diseño y la apartamos para ti. También hacemos diseños personalizados.</p>
+          <div class="cta__actions">
+            <a href="mailto:hola@harynostudio.com" class="btn btn--primary">Hacer pedido <i class="ph-bold ph-envelope-simple"></i></a>
+            <a href="index.html" class="btn btn--secondary">Volver al inicio</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="footer">
+    <div class="container footer__content">
+      <div class="footer__brand">
+        <span class="footer__logo">RY</span>
+        <p>HARYNO STUDIO © 2026<br>Hecho a mano con <i class="ph-bold ph-heart"></i></p>
+      </div>
+      <ul class="footer__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#productos">Productos</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+  <script src="js/libretas.js"></script>
+</body>
+</html>
