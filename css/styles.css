@@ -1,0 +1,1178 @@
+/* ==========================================================
+   HARYNO STUDIO — Estilo Neobrutalista
+   Paleta:
+   Rojo principal  #e30613
+   Azul            #2f5da6
+   Naranja         #f2981b
+   Verde           #0a8e44
+   Fondo crema     #f0ece4
+   ========================================================== */
+
+/* Tipografía de la marca Haryno Studio */
+@font-face {
+  font-family: 'Achiko';
+  src: url('../fonts/achiko.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --rojo: #e30613;
+  --azul: #2f5da6;
+  --naranja: #f2981b;
+  --verde: #0a8e44;
+  --crema: #f0ece4;
+  --negro: #111111;
+  --blanco: #ffffff;
+
+  --borde: 3px solid var(--negro);
+  --sombra: 6px 6px 0 var(--negro);
+  --sombra-grande: 10px 10px 0 var(--negro);
+
+  --fuente-titulos: 'Achiko', 'Archivo Black', sans-serif;
+  --fuente-texto: 'Space Grotesk', sans-serif;
+}
+
+/* ======= RESET ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: var(--fuente-texto);
+  background-color: var(--crema);
+  color: var(--negro);
+  /* Textura sutil de puntos, muy brutalista */
+  background-image: radial-gradient(rgba(17, 17, 17, 0.08) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  overflow-x: hidden;
+}
+
+.container {
+  width: min(1100px, 92%);
+  margin-inline: auto;
+}
+
+/* Iconos Phosphor: alinearlos con el texto que los acompaña */
+i[class*="ph-"] {
+  vertical-align: -0.15em;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ==========================================================
+   HEADER / NAV
+   ========================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--crema);
+  border-bottom: var(--borde);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.9rem;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--negro);
+}
+
+.nav__logo-mark {
+  font-family: var(--fuente-titulos);
+  /* Siempre en mayúsculas: la R y la Y de Achiko se dibujan unidas */
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-size: 1.4rem;
+  background-color: var(--rojo);
+  color: var(--blanco);
+  border: var(--borde);
+  padding: 0.15rem 0.55rem;
+  box-shadow: 3px 3px 0 var(--negro);
+  transform: rotate(-4deg);
+  transition: transform 0.25s ease;
+}
+
+.nav__logo:hover .nav__logo-mark {
+  transform: rotate(4deg) scale(1.08);
+}
+
+.nav__logo-text {
+  font-family: var(--fuente-titulos);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav__link {
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--negro);
+  position: relative;
+  padding: 0.2rem 0;
+}
+
+/* Subrayado animado al pasar el mouse */
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 4px;
+  background-color: var(--rojo);
+  transition: width 0.25s ease;
+}
+
+.nav__link:hover::after,
+.nav__link.active::after {
+  width: 100%;
+}
+
+.nav__link--btn {
+  background-color: var(--rojo);
+  color: var(--blanco);
+  border: var(--borde);
+  padding: 0.45rem 1.1rem;
+  box-shadow: 4px 4px 0 var(--negro);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav__link--btn::after {
+  display: none;
+}
+
+.nav__link--btn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--negro);
+}
+
+/* Botón hamburguesa (solo móvil) */
+.nav__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background-color: var(--naranja);
+  border: var(--borde);
+  box-shadow: 3px 3px 0 var(--negro);
+  padding: 0.6rem 0.55rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.nav__toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--negro);
+}
+
+.nav__toggle span {
+  display: block;
+  width: 24px;
+  height: 3px;
+  background-color: var(--negro);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animación hamburguesa → X */
+.nav__toggle.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+.nav__toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav__toggle.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ==========================================================
+   HERO
+   ========================================================== */
+.hero {
+  position: relative;
+  padding-block: 5.5rem 4.5rem;
+  overflow: hidden;
+}
+
+.hero__content {
+  max-width: 800px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero__badge {
+  display: inline-block;
+  background-color: var(--verde);
+  color: var(--blanco);
+  font-weight: 700;
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  padding: 0.4rem 1rem;
+  transform: rotate(-2deg);
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.hero__title {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  line-height: 1.05;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__title-accent {
+  color: var(--rojo);
+  /* Contorno de texto: puro CSS juguetón */
+  text-shadow: 4px 4px 0 var(--negro);
+  -webkit-text-stroke: 2px var(--negro);
+}
+
+/* Cursor parpadeante estilo terminal */
+.cursor {
+  color: var(--rojo);
+  animation: parpadeo 1s step-end infinite;
+}
+
+.hero__text {
+  font-size: 1.15rem;
+  max-width: 540px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Decoraciones flotantes del hero */
+.hero__deco {
+  position: absolute;
+  font-size: 3rem;
+  user-select: none;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.hero__deco--star {
+  top: 15%;
+  left: 8%;
+  color: var(--naranja);
+  animation-delay: 0.5s;
+}
+
+.hero__deco--flower {
+  top: 20%;
+  right: 10%;
+  color: var(--azul);
+  animation-delay: 1s;
+}
+
+.hero__deco--squiggle {
+  bottom: 12%;
+  left: 12%;
+  color: var(--verde);
+  font-size: 2rem;
+  animation-delay: 1.5s;
+}
+
+/* ==========================================================
+   BOTONES
+   ========================================================== */
+.btn {
+  display: inline-block;
+  font-family: var(--fuente-texto);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  border: var(--borde);
+  padding: 0.85rem 1.8rem;
+  box-shadow: var(--sombra);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--negro);
+}
+
+.btn:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 var(--negro);
+}
+
+.btn--primary {
+  background-color: var(--rojo);
+  color: var(--blanco);
+}
+
+.btn--secondary {
+  background-color: var(--blanco);
+  color: var(--negro);
+}
+
+/* ==========================================================
+   MARQUEE (cinta deslizante)
+   ========================================================== */
+.marquee {
+  background-color: var(--rojo);
+  border-block: var(--borde);
+  overflow: hidden;
+  padding-block: 0.8rem;
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.marquee__track {
+  display: flex;
+  white-space: nowrap;
+  animation: desplazar 22s linear infinite;
+}
+
+.marquee__track span {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  color: var(--blanco);
+  letter-spacing: 2px;
+}
+
+/* ==========================================================
+   SECCIONES
+   ========================================================== */
+.section {
+  padding-block: 5rem;
+}
+
+.section--dark {
+  background-color: var(--negro);
+  border-block: var(--borde);
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section__tag {
+  display: inline-block;
+  background-color: var(--azul);
+  color: var(--blanco);
+  font-weight: 700;
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  padding: 0.35rem 1rem;
+  margin-bottom: 1.2rem;
+  transform: rotate(2deg);
+}
+
+.section__tag--invert {
+  background-color: var(--naranja);
+  color: var(--negro);
+  box-shadow: 4px 4px 0 var(--blanco);
+}
+
+.section__title {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  text-transform: uppercase;
+}
+
+.section__title--light {
+  color: var(--crema);
+}
+
+/* ==========================================================
+   TARJETAS DE PRODUCTOS
+   ========================================================== */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.8rem;
+}
+
+.card {
+  background-color: var(--blanco);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  padding: 1.8rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Cada tarjeta ligeramente rotada, estilo sticker */
+.card:nth-child(odd) {
+  transform: rotate(-1deg);
+}
+
+.card:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.card:hover {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: var(--sombra-grande);
+}
+
+/* Tarjeta que funciona como enlace (ej. Libretas → catálogo) */
+.card--link {
+  text-decoration: none;
+  color: var(--negro);
+  cursor: pointer;
+}
+
+.card--link .card__tag {
+  background-color: var(--rojo);
+  color: var(--blanco);
+}
+
+/* Caja de icono brutalista: color sólido, borde negro y sombra dura.
+   El icono (Phosphor bold) va en blanco */
+.card__emoji {
+  font-size: 2.6rem;
+  width: 74px;
+  height: 74px;
+  display: grid;
+  place-items: center;
+  color: var(--blanco);
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Al pasar el mouse sobre la tarjeta, el icono rebota juguetón */
+.card:hover .card__emoji {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.card--red .card__emoji    { background-color: var(--rojo); }
+.card--blue .card__emoji   { background-color: var(--azul); }
+.card--orange .card__emoji { background-color: var(--naranja); }
+.card--green .card__emoji  { background-color: var(--verde); }
+
+.card__title {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+.card--red .card__title    { color: var(--rojo); }
+.card--blue .card__title   { color: var(--azul); }
+.card--orange .card__title { color: var(--naranja); }
+.card--green .card__title  { color: var(--verde); }
+
+.card__text {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+
+.card__tag {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border: 2px solid var(--negro);
+  padding: 0.2rem 0.7rem;
+  background-color: var(--crema);
+}
+
+/* ==========================================================
+   PRÓXIMAMENTE
+   ========================================================== */
+.soon {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.8rem;
+}
+
+.soon__item {
+  background-color: var(--crema);
+  border: var(--borde);
+  box-shadow: 8px 8px 0 var(--rojo);
+  padding: 1.8rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.soon__item:hover {
+  transform: translate(4px, 4px);
+  box-shadow: 4px 4px 0 var(--rojo);
+}
+
+/* Caja de icono brutalista para "Próximamente" */
+.soon__emoji {
+  font-size: 2.3rem;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: var(--blanco);
+  background-color: var(--rojo);
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.soon__item:hover .soon__emoji {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.soon__title {
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.soon__text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.soon__badge {
+  position: absolute;
+  top: -14px;
+  right: 16px;
+  background-color: var(--verde);
+  color: var(--blanco);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid var(--negro);
+  padding: 0.2rem 0.7rem;
+  transform: rotate(3deg);
+  animation: latido 2s ease-in-out infinite;
+}
+
+/* ==========================================================
+   TIMELINE / HISTORIA
+   ========================================================== */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 700px;
+  margin-inline: auto;
+  position: relative;
+}
+
+/* Línea vertical que conecta los pasos */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 27px;
+  top: 20px;
+  bottom: 20px;
+  width: 4px;
+  background-color: var(--negro);
+}
+
+.timeline__item {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  position: relative;
+}
+
+.timeline__dot {
+  flex-shrink: 0;
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  font-family: var(--fuente-titulos);
+  font-size: 1.3rem;
+  color: var(--blanco);
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  z-index: 1;
+}
+
+.timeline__dot--red    { background-color: var(--rojo); }
+.timeline__dot--orange { background-color: var(--naranja); }
+.timeline__dot--green  { background-color: var(--verde); }
+
+.timeline__content {
+  background-color: var(--blanco);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  padding: 1.4rem 1.6rem;
+  flex-grow: 1;
+  transition: transform 0.2s ease;
+}
+
+.timeline__content:hover {
+  transform: translateX(6px);
+}
+
+.timeline__content h3 {
+  font-family: var(--fuente-titulos);
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline__content p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* ==========================================================
+   CTA / CONTACTO
+   ========================================================== */
+.cta__box {
+  background-color: var(--azul);
+  border: var(--borde);
+  box-shadow: var(--sombra-grande);
+  padding: 3.5rem 2rem;
+  text-align: center;
+  color: var(--blanco);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.cta__title {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(1.7rem, 5vw, 2.8rem);
+}
+
+.cta__text {
+  max-width: 480px;
+  font-size: 1.05rem;
+}
+
+.cta__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ==========================================================
+   CATÁLOGO DE LIBRETAS
+   ========================================================== */
+.catalogo-hero {
+  padding-block: 3rem 3.5rem;
+}
+
+.catalogo-hero__volver {
+  display: inline-block;
+  margin-bottom: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+.catalogo-hero .section__header {
+  margin-bottom: 0;
+}
+
+.catalogo-hero__texto {
+  max-width: 520px;
+  margin: 1.2rem auto 1.8rem;
+  font-size: 1.1rem;
+}
+
+/* Etiqueta grande de precio */
+.catalogo-hero__precio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background-color: var(--naranja);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  padding: 0.7rem 1.6rem;
+  transform: rotate(-2deg);
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.precio__cantidad {
+  font-family: var(--fuente-titulos);
+  font-size: 2rem;
+}
+
+.precio__moneda {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Grid de productos */
+.catalogo {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+.producto {
+  background-color: var(--blanco);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* La tarjeta completa es un enlace a su página de producto */
+  text-decoration: none;
+  color: var(--negro);
+}
+
+.producto:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-grande);
+}
+
+.producto__foto {
+  position: relative;
+  border: none;
+  border-bottom: var(--borde);
+  padding: 0;
+  background-color: var(--negro);
+  display: block;
+}
+
+.producto__foto img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+}
+
+/* Lupa que aparece al pasar el mouse */
+.producto__lupa {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(17, 17, 17, 0.45);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+/* Caja brutalista para la lupa */
+.lupa__circulo {
+  font-size: 1.9rem;
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  color: var(--negro);
+  background-color: var(--naranja);
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  transform: scale(0.7);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.producto:hover .lupa__circulo {
+  transform: scale(1);
+}
+
+.producto:hover .producto__lupa,
+.producto:focus-visible .producto__lupa {
+  opacity: 1;
+}
+
+.producto__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.85rem 1rem;
+}
+
+.producto__nombre {
+  font-family: var(--fuente-titulos);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+}
+
+.producto__precio {
+  font-weight: 700;
+  color: var(--blanco);
+  background-color: var(--rojo);
+  border: 2px solid var(--negro);
+  box-shadow: 3px 3px 0 var(--negro);
+  padding: 0.25rem 0.6rem;
+  white-space: nowrap;
+}
+
+.producto__precio small {
+  font-size: 0.7rem;
+}
+
+/* ==========================================================
+   PÁGINA DE PRODUCTO (detalle de cada libreta)
+   ========================================================== */
+.detalle__volver {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+}
+
+.detalle__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.detalle__foto {
+  border: var(--borde);
+  box-shadow: var(--sombra-grande);
+  background-color: var(--negro);
+  /* Ligeramente rotada, estilo sticker */
+  transform: rotate(-1deg);
+}
+
+.detalle__foto img {
+  width: 100%;
+  display: block;
+}
+
+.detalle__info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.3rem;
+}
+
+.detalle__titulo {
+  font-family: var(--fuente-titulos);
+  font-size: clamp(2rem, 5vw, 3rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+
+.detalle__precio {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  background-color: var(--naranja);
+  border: var(--borde);
+  box-shadow: var(--sombra);
+  padding: 0.6rem 1.4rem;
+  transform: rotate(-2deg);
+}
+
+.detalle__desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 480px;
+}
+
+.detalle__specs {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.detalle__specs i {
+  color: var(--verde);
+  margin-right: 0.4rem;
+}
+
+.detalle__acciones {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botón verde de WhatsApp */
+.btn--whatsapp {
+  background-color: var(--verde);
+  color: var(--blanco);
+}
+
+.detalle__nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.detalle__flecha {
+  font-family: var(--fuente-titulos);
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: var(--negro);
+  background-color: var(--blanco);
+  border: var(--borde);
+  box-shadow: 4px 4px 0 var(--negro);
+  padding: 0.5rem 1rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.detalle__flecha:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--negro);
+}
+
+/* ==========================================================
+   FOOTER
+   ========================================================== */
+.footer {
+  background-color: var(--negro);
+  color: var(--crema);
+  border-top: var(--borde);
+  padding-block: 2.5rem;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.footer__brand .ph-heart {
+  color: var(--rojo);
+}
+
+.footer__logo {
+  font-family: var(--fuente-titulos);
+  /* Siempre en mayúsculas: la R y la Y de Achiko se dibujan unidas */
+  text-transform: uppercase;
+  letter-spacing: 0;
+  font-size: 1.5rem;
+  background-color: var(--rojo);
+  color: var(--blanco);
+  border: 3px solid var(--crema);
+  padding: 0.2rem 0.6rem;
+  transform: rotate(-4deg);
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer__links a {
+  color: var(--crema);
+  text-decoration: none;
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.footer__links a:hover {
+  color: var(--naranja);
+}
+
+/* ==========================================================
+   ANIMACIONES
+   ========================================================== */
+@keyframes flotar {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50%      { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes parpadeo {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes desplazar {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@keyframes latido {
+  0%, 100% { transform: rotate(3deg) scale(1); }
+  50%      { transform: rotate(3deg) scale(1.1); }
+}
+
+/* Aparece al hacer scroll (activado con JS) */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Las tarjetas conservan su rotación al aparecer */
+.card.reveal.visible:nth-child(odd)  { transform: rotate(-1deg); }
+.card.reveal.visible:nth-child(even) { transform: rotate(1deg); }
+.card.reveal.visible:hover           { transform: rotate(0deg) translateY(-8px); }
+
+/* Respetar preferencia de menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================
+   RESPONSIVE — MÓVIL
+   ========================================================== */
+@media (max-width: 768px) {
+  .nav__toggle {
+    display: flex;
+  }
+
+  .nav__logo-text {
+    font-size: 0.85rem;
+  }
+
+  /* Menú desplegable a pantalla completa */
+  .nav__menu {
+    position: fixed;
+    top: 69px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background-color: var(--crema);
+    border-bottom: var(--borde);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  .nav__menu.open {
+    max-height: 400px;
+  }
+
+  .nav__menu li {
+    border-top: 2px solid var(--negro);
+  }
+
+  .nav__link {
+    display: block;
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .nav__link::after {
+    display: none;
+  }
+
+  .nav__link:hover {
+    background-color: var(--naranja);
+  }
+
+  .nav__link--btn {
+    border: none;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .nav__link--btn:hover {
+    transform: none;
+  }
+
+  .hero {
+    padding-block: 3.5rem 3rem;
+  }
+
+  .hero__deco {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding-block: 3.5rem;
+  }
+
+  .soon__item {
+    flex-direction: column;
+  }
+
+  .footer__content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__brand {
+    flex-direction: column;
+  }
+
+  /* Catálogo en móvil: 2 fotos por fila */
+  .catalogo {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Nombre y precio apilados para que quepan */
+  .producto__info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .producto__nombre {
+    font-size: 0.85rem;
+  }
+
+  .producto__precio {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.55rem;
+  }
+
+  /* Página de producto en móvil: foto arriba, info abajo */
+  .detalle__grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .detalle__acciones {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .detalle__acciones .btn {
+    text-align: center;
+  }
+}

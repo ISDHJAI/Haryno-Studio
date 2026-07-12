@@ -1,0 +1,7 @@
+# Fotos originales pesadas (1-3 MB c/u): la página ya no las usa.
+# El sitio usa las versiones optimizadas en mini/ y grande/
+img/libretas/*.png
+
+# Archivos temporales de Windows
+Thumbs.db
+desktop.ini
