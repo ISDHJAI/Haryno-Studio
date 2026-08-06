@@ -1,14 +1,18 @@
 /* ==========================================================
-   HARYNO STUDIO — Estilo Neobrutalista
+   HARYNO STUDIO — Rediseño "Punk de Papelería"
+   Inspirado en el sistema de diseño de Impossible Foods
+   (lienzo vino oscuro + rojo único + tipografía gigante)
+
    Paleta:
-   Rojo principal  #e30613
-   Azul            #2f5da6
-   Naranja         #f2981b
-   Verde           #0a8e44
-   Fondo crema     #f0ece4
+   Vino profundo     #260212  (lienzo de página)
+   Vino escenario    #4f0423  (superficies de tarjetas/secciones)
+   Rojo Haryno       #e10600  (único color de acción/acento)
+   Blush             #ffc7c6  (texto secundario, contraste suave)
+   Negro carnicero   #000000  (nav, bordes, contornos)
+   Blanco hueso      #ffffff  (texto sobre fondo oscuro)
    ========================================================== */
 
-/* Tipografía de la marca Haryno Studio */
+/* Tipografía de marca: única tipografía de display del sitio */
 @font-face {
   font-family: 'Achiko';
   src: url('../fonts/achiko.otf') format('opentype');
@@ -18,19 +22,21 @@
 }
 
 :root {
-  --rojo: #e30613;
-  --azul: #2f5da6;
-  --naranja: #f2981b;
-  --verde: #0a8e44;
-  --crema: #f0ece4;
-  --negro: #111111;
+  --vino: #260212;
+  --vino-escenario: #4f0423;
+  --rojo: #e10600;
+  --blush: #ffc7c6;
+  --negro: #000000;
   --blanco: #ffffff;
 
-  --borde: 3px solid var(--negro);
-  --sombra: 6px 6px 0 var(--negro);
-  --sombra-grande: 10px 10px 0 var(--negro);
+  --borde-fino: 1px solid var(--negro);
+  --borde-fino-blush: 1px solid var(--blush);
 
-  --fuente-titulos: 'Achiko', 'Archivo Black', sans-serif;
+  --radio-tarjeta: 12px;
+  --radio-boton: 15px;
+  --radio-feature: 32px;
+
+  --fuente-display: 'Achiko', 'Arial Narrow', sans-serif;
   --fuente-texto: 'Space Grotesk', sans-serif;
 }
 
@@ -48,20 +54,16 @@ html {
 
 body {
   font-family: var(--fuente-texto);
-  background-color: var(--crema);
-  color: var(--negro);
-  /* Textura sutil de puntos, muy brutalista */
-  background-image: radial-gradient(rgba(17, 17, 17, 0.08) 1.5px, transparent 1.5px);
-  background-size: 24px 24px;
+  background-color: var(--vino);
+  color: var(--blush);
   overflow-x: hidden;
 }
 
 .container {
-  width: min(1100px, 92%);
+  width: min(1200px, 92%);
   margin-inline: auto;
 }
 
-/* Iconos Phosphor: alinearlos con el texto que los acompaña */
 i[class*="ph-"] {
   vertical-align: -0.15em;
 }
@@ -78,8 +80,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 100;
-  background-color: var(--crema);
-  border-bottom: var(--borde);
+  background-color: var(--negro);
 }
 
 .nav {
@@ -94,82 +95,62 @@ img {
   align-items: center;
   gap: 0.6rem;
   text-decoration: none;
-  color: var(--negro);
+  color: var(--blanco);
 }
 
 .nav__logo-mark {
-  font-family: var(--fuente-titulos);
-  /* Siempre en mayúsculas: la R y la Y de Achiko se dibujan unidas */
+  font-family: var(--fuente-display);
   text-transform: uppercase;
   letter-spacing: 0;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   background-color: var(--rojo);
   color: var(--blanco);
-  border: var(--borde);
-  padding: 0.15rem 0.55rem;
-  box-shadow: 3px 3px 0 var(--negro);
-  transform: rotate(-4deg);
-  transition: transform 0.25s ease;
-}
-
-.nav__logo:hover .nav__logo-mark {
-  transform: rotate(4deg) scale(1.08);
+  border-radius: 8px;
+  padding: 0.2rem 0.6rem;
 }
 
 .nav__logo-text {
-  font-family: var(--fuente-titulos);
+  font-family: var(--fuente-display);
   font-size: 1rem;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .nav__menu {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
   list-style: none;
 }
 
 .nav__link {
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-decoration: none;
-  color: var(--negro);
+  color: var(--blush);
   position: relative;
   padding: 0.2rem 0;
+  transition: color 0.2s ease;
 }
 
-/* Subrayado animado al pasar el mouse */
-.nav__link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 4px;
-  background-color: var(--rojo);
-  transition: width 0.25s ease;
-}
-
-.nav__link:hover::after,
-.nav__link.active::after {
-  width: 100%;
+.nav__link:hover,
+.nav__link.active {
+  color: var(--blanco);
 }
 
 .nav__link--btn {
   background-color: var(--rojo);
   color: var(--blanco);
-  border: var(--borde);
-  padding: 0.45rem 1.1rem;
-  box-shadow: 4px 4px 0 var(--negro);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.nav__link--btn::after {
-  display: none;
+  border-radius: var(--radio-boton);
+  padding: 0.55rem 1.2rem;
+  transition: background-color 0.15s ease;
 }
 
 .nav__link--btn:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--negro);
+  background-color: var(--blush);
+  color: var(--negro);
 }
 
 /* Botón hamburguesa (solo móvil) */
@@ -177,36 +158,29 @@ img {
   display: none;
   flex-direction: column;
   gap: 5px;
-  background-color: var(--naranja);
-  border: var(--borde);
-  box-shadow: 3px 3px 0 var(--negro);
+  background-color: transparent;
+  border: var(--borde-fino-blush);
+  border-radius: var(--radio-boton);
   padding: 0.6rem 0.55rem;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.nav__toggle:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0 var(--negro);
 }
 
 .nav__toggle span {
   display: block;
-  width: 24px;
-  height: 3px;
-  background-color: var(--negro);
+  width: 22px;
+  height: 2px;
+  background-color: var(--blanco);
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animación hamburguesa → X */
 .nav__toggle.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(7px) rotate(45deg);
 }
 .nav__toggle.open span:nth-child(2) {
   opacity: 0;
 }
 .nav__toggle.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================================
@@ -214,119 +188,152 @@ img {
    ========================================================== */
 .hero {
   position: relative;
-  padding-block: 5.5rem 4.5rem;
+  padding-block: 6rem 5rem;
   overflow: hidden;
 }
 
 .hero__content {
-  max-width: 800px;
+  max-width: 880px;
+  margin-inline: auto;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.6rem;
+  position: relative;
+  z-index: 2;
 }
 
 .hero__badge {
-  display: inline-block;
-  background-color: var(--verde);
-  color: var(--blanco);
-  font-weight: 700;
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
-  padding: 0.4rem 1rem;
-  transform: rotate(-2deg);
-  animation: flotar 3s ease-in-out infinite;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: var(--borde-fino-blush);
+  color: var(--blush);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: var(--radio-boton);
+  padding: 0.45rem 1.1rem;
 }
 
 .hero__title {
-  font-family: var(--fuente-titulos);
-  font-size: clamp(2.4rem, 8vw, 5rem);
-  line-height: 1.05;
+  font-family: var(--fuente-display);
+  font-size: clamp(2.6rem, 9vw, 7.2rem);
+  line-height: 0.85;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
+  color: var(--rojo);
   display: flex;
   flex-direction: column;
 }
 
-.hero__title-accent {
-  color: var(--rojo);
-  /* Contorno de texto: puro CSS juguetón */
-  text-shadow: 4px 4px 0 var(--negro);
-  -webkit-text-stroke: 2px var(--negro);
+.hero__title span {
+  display: block;
 }
 
-/* Cursor parpadeante estilo terminal */
+.hero__title-accent {
+  color: var(--blanco);
+}
+
 .cursor {
   color: var(--rojo);
   animation: parpadeo 1s step-end infinite;
 }
 
 .hero__text {
-  font-size: 1.15rem;
-  max-width: 540px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 520px;
+  color: var(--blush);
+}
+
+.hero__text strong {
+  color: var(--blanco);
 }
 
 .hero__actions {
   display: flex;
-  gap: 1rem;
+  gap: 0.9rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-/* Decoraciones flotantes del hero */
-.hero__deco {
+/* Fotos de producto recortadas en formas orgánicas, flotando alrededor del hero */
+.hero__photos {
   position: absolute;
-  font-size: 3rem;
-  user-select: none;
-  animation: flotar 4s ease-in-out infinite;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
-.hero__deco--star {
-  top: 15%;
-  left: 8%;
-  color: var(--naranja);
-  animation-delay: 0.5s;
+.hero__photo {
+  position: absolute;
+  object-fit: cover;
+  filter: saturate(1.05);
+  animation: flotar 6s ease-in-out infinite;
 }
 
-.hero__deco--flower {
-  top: 20%;
-  right: 10%;
-  color: var(--azul);
-  animation-delay: 1s;
+.hero__photo--a {
+  top: 6%;
+  left: 4%;
+  width: 15vw;
+  max-width: 170px;
+  aspect-ratio: 4 / 5;
+  clip-path: polygon(18% 0%, 82% 4%, 100% 38%, 92% 88%, 55% 100%, 8% 82%, 0% 42%);
+  animation-delay: 0s;
 }
 
-.hero__deco--squiggle {
-  bottom: 12%;
-  left: 12%;
-  color: var(--verde);
-  font-size: 2rem;
-  animation-delay: 1.5s;
+.hero__photo--b {
+  top: 12%;
+  right: 5%;
+  width: 13vw;
+  max-width: 150px;
+  aspect-ratio: 1 / 1;
+  clip-path: polygon(30% 0%, 100% 12%, 92% 76%, 62% 100%, 6% 84%, 0% 28%);
+  animation-delay: 1.2s;
+}
+
+.hero__photo--c {
+  bottom: 4%;
+  left: 9%;
+  width: 12vw;
+  max-width: 140px;
+  aspect-ratio: 5 / 4;
+  clip-path: polygon(10% 6%, 78% 0%, 100% 46%, 86% 92%, 34% 100%, 0% 62%);
+  animation-delay: 2.4s;
+}
+
+.hero__photo--d {
+  bottom: 8%;
+  right: 8%;
+  width: 14vw;
+  max-width: 160px;
+  aspect-ratio: 4 / 5;
+  clip-path: polygon(22% 0%, 90% 10%, 100% 60%, 76% 100%, 20% 96%, 0% 50%);
+  animation-delay: 3.4s;
 }
 
 /* ==========================================================
    BOTONES
    ========================================================== */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--fuente-texto);
-  font-weight: 700;
-  font-size: 1rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
   text-decoration: none;
-  border: var(--borde);
-  padding: 0.85rem 1.8rem;
-  box-shadow: var(--sombra);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border-radius: var(--radio-boton);
+  padding: 0.85rem 1.6rem;
+  border: 1px solid transparent;
   cursor: pointer;
-}
-
-.btn:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 3px 3px 0 var(--negro);
-}
-
-.btn:active {
-  transform: translate(6px, 6px);
-  box-shadow: 0 0 0 var(--negro);
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn--primary {
@@ -334,7 +341,18 @@ img {
   color: var(--blanco);
 }
 
+.btn--primary:hover {
+  background-color: var(--blush);
+  color: var(--negro);
+}
+
 .btn--secondary {
+  background-color: transparent;
+  color: var(--blanco);
+  border-color: var(--blanco);
+}
+
+.btn--secondary:hover {
   background-color: var(--blanco);
   color: var(--negro);
 }
@@ -343,11 +361,9 @@ img {
    MARQUEE (cinta deslizante)
    ========================================================== */
 .marquee {
-  background-color: var(--rojo);
-  border-block: var(--borde);
+  background-color: var(--negro);
   overflow: hidden;
-  padding-block: 0.8rem;
-  transform: rotate(-1deg) scale(1.02);
+  padding-block: 0.75rem;
 }
 
 .marquee__track {
@@ -357,22 +373,22 @@ img {
 }
 
 .marquee__track span {
-  font-family: var(--fuente-titulos);
-  font-size: 1.3rem;
-  color: var(--blanco);
-  letter-spacing: 2px;
+  font-family: var(--fuente-display);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  color: var(--rojo);
+  letter-spacing: 0.03em;
 }
 
 /* ==========================================================
    SECCIONES
    ========================================================== */
 .section {
-  padding-block: 5rem;
+  padding-block: 5.5rem;
 }
 
 .section--dark {
   background-color: var(--negro);
-  border-block: var(--borde);
 }
 
 .section__header {
@@ -382,30 +398,36 @@ img {
 
 .section__tag {
   display: inline-block;
-  background-color: var(--azul);
-  color: var(--blanco);
-  font-weight: 700;
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
-  padding: 0.35rem 1rem;
-  margin-bottom: 1.2rem;
-  transform: rotate(2deg);
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  margin-bottom: 1rem;
+}
+
+.section__tag::before {
+  content: "◂ ";
+}
+
+.section__tag::after {
+  content: " ▸";
 }
 
 .section__tag--invert {
-  background-color: var(--naranja);
-  color: var(--negro);
-  box-shadow: 4px 4px 0 var(--blanco);
+  color: var(--blush);
 }
 
 .section__title {
-  font-family: var(--fuente-titulos);
-  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-family: var(--fuente-display);
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  line-height: 0.9;
   text-transform: uppercase;
+  color: var(--rojo);
 }
 
 .section__title--light {
-  color: var(--crema);
+  color: var(--blanco);
 }
 
 /* ==========================================================
@@ -414,38 +436,28 @@ img {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.8rem;
+  gap: 1.4rem;
 }
 
 .card {
-  background-color: var(--blanco);
-  border: var(--borde);
-  box-shadow: var(--sombra);
+  background-color: var(--vino-escenario);
+  border: var(--borde-fino);
+  border-radius: var(--radio-tarjeta);
   padding: 1.8rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Cada tarjeta ligeramente rotada, estilo sticker */
-.card:nth-child(odd) {
-  transform: rotate(-1deg);
-}
-
-.card:nth-child(even) {
-  transform: rotate(1deg);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .card:hover {
-  transform: rotate(0deg) translateY(-8px);
-  box-shadow: var(--sombra-grande);
+  transform: translateY(-6px);
+  border-color: var(--rojo);
 }
 
-/* Tarjeta que funciona como enlace (ej. Libretas → catálogo) */
 .card--link {
   text-decoration: none;
-  color: var(--negro);
+  color: var(--blush);
   cursor: pointer;
 }
 
@@ -454,54 +466,48 @@ img {
   color: var(--blanco);
 }
 
-/* Caja de icono brutalista: color sólido, borde negro y sombra dura.
-   El icono (Phosphor bold) va en blanco */
 .card__emoji {
-  font-size: 2.6rem;
-  width: 74px;
-  height: 74px;
+  font-size: 2.2rem;
+  width: 64px;
+  height: 64px;
   display: grid;
   place-items: center;
   color: var(--blanco);
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
+  background-color: var(--rojo);
+  border-radius: 50%;
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Al pasar el mouse sobre la tarjeta, el icono rebota juguetón */
 .card:hover .card__emoji {
-  transform: scale(1.1) rotate(-8deg);
+  transform: scale(1.08) rotate(-6deg);
 }
-
-.card--red .card__emoji    { background-color: var(--rojo); }
-.card--blue .card__emoji   { background-color: var(--azul); }
-.card--orange .card__emoji { background-color: var(--naranja); }
-.card--green .card__emoji  { background-color: var(--verde); }
 
 .card__title {
-  font-family: var(--fuente-titulos);
-  font-size: 1.4rem;
+  font-family: var(--fuente-display);
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
+  color: var(--blanco);
 }
-
-.card--red .card__title    { color: var(--rojo); }
-.card--blue .card__title   { color: var(--azul); }
-.card--orange .card__title { color: var(--naranja); }
-.card--green .card__title  { color: var(--verde); }
 
 .card__text {
   font-size: 0.95rem;
   line-height: 1.55;
+  color: var(--blush);
   flex-grow: 1;
 }
 
 .card__tag {
   align-self: flex-start;
-  font-size: 0.8rem;
-  font-weight: 700;
-  border: 2px solid var(--negro);
-  padding: 0.2rem 0.7rem;
-  background-color: var(--crema);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-radius: var(--radio-boton);
+  padding: 0.3rem 0.8rem;
+  background-color: transparent;
+  border: var(--borde-fino-blush);
+  color: var(--blush);
 }
 
 /* ==========================================================
@@ -510,69 +516,63 @@ img {
 .soon {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.8rem;
+  gap: 1.4rem;
 }
 
 .soon__item {
-  background-color: var(--crema);
-  border: var(--borde);
-  box-shadow: 8px 8px 0 var(--rojo);
+  background-color: var(--vino-escenario);
+  border: var(--borde-fino);
+  border-radius: var(--radio-tarjeta);
   padding: 1.8rem;
   display: flex;
   align-items: flex-start;
   gap: 1.2rem;
   position: relative;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .soon__item:hover {
-  transform: translate(4px, 4px);
-  box-shadow: 4px 4px 0 var(--rojo);
+  border-color: var(--rojo);
 }
 
-/* Caja de icono brutalista para "Próximamente" */
 .soon__emoji {
-  font-size: 2.3rem;
-  width: 70px;
-  height: 70px;
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
   color: var(--blanco);
   background-color: var(--rojo);
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.soon__item:hover .soon__emoji {
-  transform: scale(1.1) rotate(8deg);
+  border-radius: 50%;
 }
 
 .soon__title {
-  font-family: var(--fuente-titulos);
+  font-family: var(--fuente-display);
   font-size: 1.3rem;
   text-transform: uppercase;
+  color: var(--blanco);
   margin-bottom: 0.4rem;
 }
 
 .soon__text {
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--blush);
 }
 
 .soon__badge {
   position: absolute;
-  top: -14px;
+  top: -12px;
   right: 16px;
-  background-color: var(--verde);
+  background-color: var(--rojo);
   color: var(--blanco);
-  font-size: 0.75rem;
-  font-weight: 700;
-  border: 2px solid var(--negro);
-  padding: 0.2rem 0.7rem;
-  transform: rotate(3deg);
-  animation: latido 2s ease-in-out infinite;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border-radius: var(--radio-boton);
+  padding: 0.25rem 0.8rem;
 }
 
 /* ==========================================================
@@ -587,15 +587,15 @@ img {
   position: relative;
 }
 
-/* Línea vertical que conecta los pasos */
 .timeline::before {
   content: "";
   position: absolute;
-  left: 27px;
+  left: 25px;
   top: 20px;
   bottom: 20px;
-  width: 4px;
-  background-color: var(--negro);
+  width: 1px;
+  background-color: var(--blush);
+  opacity: 0.35;
 }
 
 .timeline__item {
@@ -607,56 +607,56 @@ img {
 
 .timeline__dot {
   flex-shrink: 0;
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   display: grid;
   place-items: center;
-  font-family: var(--fuente-titulos);
-  font-size: 1.3rem;
+  font-family: var(--fuente-display);
+  font-size: 1.2rem;
   color: var(--blanco);
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
+  background-color: var(--rojo);
+  border-radius: 50%;
   z-index: 1;
 }
 
-.timeline__dot--red    { background-color: var(--rojo); }
-.timeline__dot--orange { background-color: var(--naranja); }
-.timeline__dot--green  { background-color: var(--verde); }
-
-.timeline__content {
-  background-color: var(--blanco);
-  border: var(--borde);
-  box-shadow: var(--sombra);
-  padding: 1.4rem 1.6rem;
-  flex-grow: 1;
-  transition: transform 0.2s ease;
+.timeline__dot--orange,
+.timeline__dot--green,
+.timeline__dot--red {
+  background-color: var(--rojo);
 }
 
-.timeline__content:hover {
-  transform: translateX(6px);
+.timeline__content {
+  background-color: var(--vino-escenario);
+  border: var(--borde-fino);
+  border-radius: var(--radio-tarjeta);
+  padding: 1.4rem 1.6rem;
+  flex-grow: 1;
 }
 
 .timeline__content h3 {
-  font-family: var(--fuente-titulos);
-  font-size: 1.15rem;
+  font-family: var(--fuente-display);
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: var(--blanco);
   margin-bottom: 0.5rem;
 }
 
 .timeline__content p {
   font-size: 0.95rem;
   line-height: 1.55;
+  color: var(--blush);
 }
 
 /* ==========================================================
    CTA / CONTACTO
    ========================================================== */
 .cta__box {
-  background-color: var(--azul);
-  border: var(--borde);
-  box-shadow: var(--sombra-grande);
-  padding: 3.5rem 2rem;
+  background-color: var(--vino-escenario);
+  border: var(--borde-fino);
+  border-radius: var(--radio-feature);
+  padding: 4rem 2rem;
   text-align: center;
-  color: var(--blanco);
+  color: var(--blush);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -664,8 +664,11 @@ img {
 }
 
 .cta__title {
-  font-family: var(--fuente-titulos);
-  font-size: clamp(1.7rem, 5vw, 2.8rem);
+  font-family: var(--fuente-display);
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--rojo);
 }
 
 .cta__text {
@@ -684,14 +687,14 @@ img {
    CATÁLOGO DE LIBRETAS
    ========================================================== */
 .catalogo-hero {
-  padding-block: 3rem 3.5rem;
+  padding-block: 3.5rem 3.5rem;
 }
 
 .catalogo-hero__volver {
   display: inline-block;
   margin-bottom: 2rem;
   padding: 0.5rem 1.2rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .catalogo-hero .section__header {
@@ -702,60 +705,56 @@ img {
   max-width: 520px;
   margin: 1.2rem auto 1.8rem;
   font-size: 1.1rem;
+  color: var(--blush);
 }
 
-/* Etiqueta grande de precio */
 .catalogo-hero__precio {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  background-color: var(--naranja);
-  border: var(--borde);
-  box-shadow: var(--sombra);
+  background-color: var(--rojo);
+  border-radius: var(--radio-boton);
   padding: 0.7rem 1.6rem;
-  transform: rotate(-2deg);
-  animation: flotar 3s ease-in-out infinite;
 }
 
 .precio__cantidad {
-  font-family: var(--fuente-titulos);
-  font-size: 2rem;
+  font-family: var(--fuente-display);
+  font-size: 1.8rem;
+  color: var(--blanco);
 }
 
 .precio__moneda {
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--blanco);
 }
 
 /* Grid de productos */
 .catalogo {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-  gap: 1.8rem;
+  gap: 1.4rem;
 }
 
 .producto {
-  background-color: var(--blanco);
-  border: var(--borde);
-  box-shadow: var(--sombra);
+  background-color: var(--vino-escenario);
+  border: var(--borde-fino);
+  border-radius: var(--radio-tarjeta);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* La tarjeta completa es un enlace a su página de producto */
+  transition: transform 0.2s ease, border-color 0.2s ease;
   text-decoration: none;
-  color: var(--negro);
+  color: var(--blush);
 }
 
 .producto:hover {
   transform: translateY(-6px);
-  box-shadow: var(--sombra-grande);
+  border-color: var(--rojo);
 }
 
 .producto__foto {
   position: relative;
-  border: none;
-  border-bottom: var(--borde);
-  padding: 0;
   background-color: var(--negro);
   display: block;
 }
@@ -767,28 +766,25 @@ img {
   display: block;
 }
 
-/* Lupa que aparece al pasar el mouse */
 .producto__lupa {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(17, 17, 17, 0.45);
+  background-color: rgba(38, 2, 18, 0.6);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-/* Caja brutalista para la lupa */
 .lupa__circulo {
-  font-size: 1.9rem;
-  width: 62px;
-  height: 62px;
+  font-size: 1.7rem;
+  width: 56px;
+  height: 56px;
   display: grid;
   place-items: center;
-  color: var(--negro);
-  background-color: var(--naranja);
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
+  color: var(--blanco);
+  background-color: var(--rojo);
+  border-radius: 50%;
   transform: scale(0.7);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
@@ -811,23 +807,21 @@ img {
 }
 
 .producto__nombre {
-  font-family: var(--fuente-titulos);
-  font-size: 0.95rem;
+  font-family: var(--fuente-display);
+  font-size: 0.9rem;
   text-transform: uppercase;
+  color: var(--blanco);
 }
 
 .producto__precio {
-  font-weight: 700;
-  color: var(--blanco);
-  background-color: var(--rojo);
-  border: 2px solid var(--negro);
-  box-shadow: 3px 3px 0 var(--negro);
-  padding: 0.25rem 0.6rem;
+  font-weight: 500;
+  font-size: 0.85rem;
+  color: var(--rojo);
   white-space: nowrap;
 }
 
 .producto__precio small {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
 }
 
 /* ==========================================================
@@ -837,7 +831,7 @@ img {
   display: inline-block;
   margin-bottom: 2.5rem;
   padding: 0.5rem 1.2rem;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
 }
 
 .detalle__grid {
@@ -848,11 +842,9 @@ img {
 }
 
 .detalle__foto {
-  border: var(--borde);
-  box-shadow: var(--sombra-grande);
+  border-radius: var(--radio-feature);
+  overflow: hidden;
   background-color: var(--negro);
-  /* Ligeramente rotada, estilo sticker */
-  transform: rotate(-1deg);
 }
 
 .detalle__foto img {
@@ -868,27 +860,31 @@ img {
 }
 
 .detalle__titulo {
-  font-family: var(--fuente-titulos);
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-family: var(--fuente-display);
+  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  line-height: 0.9;
   text-transform: uppercase;
-  line-height: 1.05;
+  color: var(--rojo);
 }
 
 .detalle__precio {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  background-color: var(--naranja);
-  border: var(--borde);
-  box-shadow: var(--sombra);
+  background-color: var(--rojo);
+  border-radius: var(--radio-boton);
   padding: 0.6rem 1.4rem;
-  transform: rotate(-2deg);
+}
+
+.detalle__precio .precio__cantidad {
+  font-size: 1.5rem;
 }
 
 .detalle__desc {
   font-size: 1.05rem;
   line-height: 1.6;
   max-width: 480px;
+  color: var(--blush);
 }
 
 .detalle__specs {
@@ -897,10 +893,11 @@ img {
   flex-direction: column;
   gap: 0.5rem;
   font-weight: 500;
+  color: var(--blush);
 }
 
 .detalle__specs i {
-  color: var(--verde);
+  color: var(--rojo);
   margin-right: 0.4rem;
 }
 
@@ -910,10 +907,14 @@ img {
   flex-wrap: wrap;
 }
 
-/* Botón verde de WhatsApp */
 .btn--whatsapp {
-  background-color: var(--verde);
+  background-color: var(--rojo);
   color: var(--blanco);
+}
+
+.btn--whatsapp:hover {
+  background-color: var(--blush);
+  color: var(--negro);
 }
 
 .detalle__nav {
@@ -923,20 +924,20 @@ img {
 }
 
 .detalle__flecha {
-  font-family: var(--fuente-titulos);
-  font-size: 0.95rem;
+  font-family: var(--fuente-display);
+  font-size: 0.9rem;
+  text-transform: uppercase;
   text-decoration: none;
-  color: var(--negro);
-  background-color: var(--blanco);
-  border: var(--borde);
-  box-shadow: 4px 4px 0 var(--negro);
+  color: var(--blanco);
+  border: var(--borde-fino-blush);
+  border-radius: var(--radio-boton);
   padding: 0.5rem 1rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .detalle__flecha:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 var(--negro);
+  background-color: var(--blanco);
+  color: var(--negro);
 }
 
 /* ==========================================================
@@ -944,8 +945,7 @@ img {
    ========================================================== */
 .footer {
   background-color: var(--negro);
-  color: var(--crema);
-  border-top: var(--borde);
+  color: var(--blush);
   padding-block: 2.5rem;
 }
 
@@ -961,7 +961,7 @@ img {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -970,16 +970,14 @@ img {
 }
 
 .footer__logo {
-  font-family: var(--fuente-titulos);
-  /* Siempre en mayúsculas: la R y la Y de Achiko se dibujan unidas */
+  font-family: var(--fuente-display);
   text-transform: uppercase;
   letter-spacing: 0;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   background-color: var(--rojo);
   color: var(--blanco);
-  border: 3px solid var(--crema);
+  border-radius: 8px;
   padding: 0.2rem 0.6rem;
-  transform: rotate(-4deg);
 }
 
 .footer__links {
@@ -990,22 +988,25 @@ img {
 }
 
 .footer__links a {
-  color: var(--crema);
+  color: var(--blush);
   text-decoration: none;
-  font-weight: 700;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
   transition: color 0.2s ease;
 }
 
 .footer__links a:hover {
-  color: var(--naranja);
+  color: var(--rojo);
 }
 
 /* ==========================================================
    ANIMACIONES
    ========================================================== */
 @keyframes flotar {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%      { transform: translateY(-12px) rotate(2deg); }
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-14px); }
 }
 
 @keyframes parpadeo {
@@ -1016,11 +1017,6 @@ img {
 @keyframes desplazar {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
-}
-
-@keyframes latido {
-  0%, 100% { transform: rotate(3deg) scale(1); }
-  50%      { transform: rotate(3deg) scale(1.1); }
 }
 
 /* Aparece al hacer scroll (activado con JS) */
@@ -1034,11 +1030,6 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* Las tarjetas conservan su rotación al aparecer */
-.card.reveal.visible:nth-child(odd)  { transform: rotate(-1deg); }
-.card.reveal.visible:nth-child(even) { transform: rotate(1deg); }
-.card.reveal.visible:hover           { transform: rotate(0deg) translateY(-8px); }
 
 /* Respetar preferencia de menos movimiento */
 @media (prefers-reduced-motion: reduce) {
@@ -1062,20 +1053,18 @@ img {
   }
 
   .nav__logo-text {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
-  /* Menú desplegable a pantalla completa */
   .nav__menu {
     position: fixed;
-    top: 69px;
+    top: 65px;
     left: 0;
     right: 0;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background-color: var(--crema);
-    border-bottom: var(--borde);
+    background-color: var(--negro);
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
@@ -1086,39 +1075,26 @@ img {
   }
 
   .nav__menu li {
-    border-top: 2px solid var(--negro);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
 
   .nav__link {
     display: block;
     padding: 1rem 1.5rem;
-    font-size: 1.1rem;
-  }
-
-  .nav__link::after {
-    display: none;
-  }
-
-  .nav__link:hover {
-    background-color: var(--naranja);
+    font-size: 1.05rem;
   }
 
   .nav__link--btn {
-    border: none;
-    box-shadow: none;
+    border-radius: 0;
     text-align: center;
   }
 
-  .nav__link--btn:hover {
-    transform: none;
-  }
-
   .hero {
-    padding-block: 3.5rem 3rem;
+    padding-block: 4rem 3rem;
   }
 
-  .hero__deco {
-    font-size: 2rem;
+  .hero__photos {
+    display: none;
   }
 
   .section {
@@ -1138,13 +1114,11 @@ img {
     flex-direction: column;
   }
 
-  /* Catálogo en móvil: 2 fotos por fila */
   .catalogo {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  /* Nombre y precio apilados para que quepan */
   .producto__info {
     flex-direction: column;
     align-items: flex-start;
@@ -1153,15 +1127,13 @@ img {
   }
 
   .producto__nombre {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
   }
 
   .producto__precio {
-    font-size: 0.9rem;
-    padding: 0.2rem 0.55rem;
+    font-size: 0.82rem;
   }
 
-  /* Página de producto en móvil: foto arriba, info abajo */
   .detalle__grid {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -1174,5 +1146,6 @@ img {
 
   .detalle__acciones .btn {
     text-align: center;
+    justify-content: center;
   }
 }
