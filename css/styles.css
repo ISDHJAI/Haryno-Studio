@@ -38,6 +38,31 @@
 
   --fuente-display: 'Achiko', 'Arial Narrow', sans-serif;
   --fuente-texto: 'Space Grotesk', sans-serif;
+
+  /* Página Espejos (próximamente) — vidrio esmerilado con la paleta de Haryno */
+  --fuente-glass: 'Inter', sans-serif;
+  --glass-coral: #ff5b3d;
+  --glass-rosa: #ff9fb0;
+  --glass-tinta: #131313;
+  --glass-acero: #6a6a6a;
+
+  /* Páginas Libretas / Agendas — boutique de papelería (mishmash) */
+  --fuente-boutique: 'Manrope', sans-serif;
+  --boutique-paper: #f0ece4;
+  --boutique-card: #ffffff;
+  --boutique-ink: #171717;
+  --boutique-iron: #6f6a62;
+  --boutique-ash: #e4ddd1;
+  --boutique-bone: #f7f4ee;
+
+  /* Paleta original de marca Haryno — acentos vivos sobre el cromo neutro */
+  --h-rojo: #c8133d;
+  --h-azul: #2f5da6;
+  --h-naranja: #f2981b;
+  --h-verde: #0a8e44;
+  --h-teal: #5dbb9b;
+  --h-oro: #fab710;
+  --h-cielo: #0085cc;
 }
 
 /* ======= RESET ======= */
@@ -676,6 +701,25 @@ img {
   font-size: 1.05rem;
 }
 
+body.pagina-boutique .cta__box {
+  background-color: #faedc9;
+  border: 1px solid var(--boutique-ash);
+  border-radius: 20px;
+}
+
+body.pagina-boutique .cta__title {
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--boutique-ink);
+}
+
+body.pagina-boutique .cta__text {
+  font-family: var(--fuente-boutique);
+  color: var(--boutique-iron);
+}
+
 .cta__actions {
   display: flex;
   gap: 1rem;
@@ -684,8 +728,38 @@ img {
 }
 
 /* ==========================================================
-   CATÁLOGO DE LIBRETAS
+   CATÁLOGO DE LIBRETAS + PÁGINA DE PRODUCTO
+   "Boutique de papelería" — cromo acromático, fotos y acentos
+   de color con la paleta real de Haryno. Inspirado en mishmash®.
    ========================================================== */
+body.pagina-boutique {
+  background-color: var(--boutique-paper);
+  color: var(--boutique-ink);
+}
+
+body.pagina-boutique .btn--primary {
+  background-color: var(--boutique-ink);
+  color: #ffffff;
+  border-radius: 12px;
+}
+
+body.pagina-boutique .btn--primary:hover {
+  background-color: var(--h-rojo);
+}
+
+body.pagina-boutique .btn--secondary {
+  background-color: transparent;
+  color: var(--boutique-ink);
+  border-color: var(--boutique-ash);
+  border-radius: 12px;
+}
+
+body.pagina-boutique .btn--secondary:hover {
+  background-color: var(--boutique-ink);
+  color: #ffffff;
+  border-color: var(--boutique-ink);
+}
+
 .catalogo-hero {
   padding-block: 3.5rem 3.5rem;
 }
@@ -701,32 +775,49 @@ img {
   margin-bottom: 0;
 }
 
+.catalogo-hero .section__tag {
+  color: var(--h-rojo);
+}
+
+.catalogo-hero .section__title {
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  color: var(--boutique-ink);
+  text-transform: none;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
 .catalogo-hero__texto {
   max-width: 520px;
   margin: 1.2rem auto 1.8rem;
   font-size: 1.1rem;
-  color: var(--blush);
+  font-family: var(--fuente-boutique);
+  color: var(--boutique-iron);
 }
 
 .catalogo-hero__precio {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  background-color: var(--rojo);
-  border-radius: var(--radio-boton);
-  padding: 0.7rem 1.6rem;
+  background-color: var(--h-oro);
+  border-radius: 9999px;
+  padding: 0.6rem 1.4rem;
 }
 
 .precio__cantidad {
-  font-family: var(--fuente-display);
-  font-size: 1.8rem;
-  color: var(--blanco);
+  font-family: var(--fuente-boutique);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--boutique-ink);
 }
 
 .precio__moneda {
-  font-weight: 500;
-  font-size: 0.9rem;
-  color: var(--blanco);
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--boutique-ink);
 }
 
 /* Grid de productos */
@@ -737,25 +828,47 @@ img {
 }
 
 .producto {
-  background-color: var(--vino-escenario);
-  border: var(--borde-fino);
-  border-radius: var(--radio-tarjeta);
+  position: relative;
+  background-color: var(--boutique-card);
+  border: 1px solid var(--boutique-ash);
+  border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: transform 0.2s ease, border-color 0.2s ease;
   text-decoration: none;
-  color: var(--blush);
+  color: var(--boutique-ink);
 }
 
 .producto:hover {
-  transform: translateY(-6px);
-  border-color: var(--rojo);
+  transform: translateY(-4px);
+  border-color: var(--boutique-ink);
 }
+
+/* Chip de acento con los colores de marca Haryno, uno distinto por diseño */
+.producto::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  z-index: 1;
+  background-color: var(--h-rojo);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.85);
+}
+
+.producto:nth-of-type(7n+2)::before { background-color: var(--h-azul); }
+.producto:nth-of-type(7n+3)::before { background-color: var(--h-naranja); }
+.producto:nth-of-type(7n+4)::before { background-color: var(--h-verde); }
+.producto:nth-of-type(7n+5)::before { background-color: var(--h-teal); }
+.producto:nth-of-type(7n+6)::before { background-color: var(--h-oro); }
+.producto:nth-of-type(7n+7)::before { background-color: var(--h-cielo); }
 
 .producto__foto {
   position: relative;
-  background-color: var(--negro);
+  background-color: var(--boutique-bone);
   display: block;
 }
 
@@ -771,19 +884,19 @@ img {
   inset: 0;
   display: grid;
   place-items: center;
-  background-color: rgba(38, 2, 18, 0.6);
+  background-color: rgba(23, 23, 23, 0.5);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .lupa__circulo {
-  font-size: 1.7rem;
-  width: 56px;
-  height: 56px;
+  font-size: 1.6rem;
+  width: 52px;
+  height: 52px;
   display: grid;
   place-items: center;
-  color: var(--blanco);
-  background-color: var(--rojo);
+  color: var(--boutique-ink);
+  background-color: #ffffff;
   border-radius: 50%;
   transform: scale(0.7);
   transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -807,21 +920,24 @@ img {
 }
 
 .producto__nombre {
-  font-family: var(--fuente-display);
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: var(--blanco);
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--boutique-ink);
 }
 
 .producto__precio {
-  font-weight: 500;
+  font-family: var(--fuente-boutique);
+  font-weight: 700;
   font-size: 0.85rem;
-  color: var(--rojo);
+  color: var(--boutique-ink);
   white-space: nowrap;
 }
 
 .producto__precio small {
+  font-weight: 500;
   font-size: 0.68rem;
+  color: var(--boutique-iron);
 }
 
 /* ==========================================================
@@ -842,9 +958,10 @@ img {
 }
 
 .detalle__foto {
-  border-radius: var(--radio-feature);
+  border-radius: 12px;
   overflow: hidden;
-  background-color: var(--negro);
+  background-color: var(--boutique-bone);
+  border: 1px solid var(--boutique-ash);
 }
 
 .detalle__foto img {
@@ -859,32 +976,38 @@ img {
   gap: 1.3rem;
 }
 
+.detalle__info .section__tag {
+  color: var(--h-rojo);
+}
+
 .detalle__titulo {
-  font-family: var(--fuente-display);
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
-  line-height: 0.9;
-  text-transform: uppercase;
-  color: var(--rojo);
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--boutique-ink);
 }
 
 .detalle__precio {
   display: inline-flex;
   align-items: baseline;
   gap: 0.5rem;
-  background-color: var(--rojo);
-  border-radius: var(--radio-boton);
-  padding: 0.6rem 1.4rem;
+  background-color: var(--h-oro);
+  border-radius: 9999px;
+  padding: 0.55rem 1.3rem;
 }
 
 .detalle__precio .precio__cantidad {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .detalle__desc {
-  font-size: 1.05rem;
+  font-family: var(--fuente-boutique);
+  font-size: 1.02rem;
   line-height: 1.6;
   max-width: 480px;
-  color: var(--blush);
+  color: var(--boutique-iron);
 }
 
 .detalle__specs {
@@ -892,12 +1015,13 @@ img {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  font-family: var(--fuente-boutique);
   font-weight: 500;
-  color: var(--blush);
+  color: var(--boutique-ink);
 }
 
 .detalle__specs i {
-  color: var(--rojo);
+  color: var(--h-verde);
   margin-right: 0.4rem;
 }
 
@@ -908,13 +1032,13 @@ img {
 }
 
 .btn--whatsapp {
-  background-color: var(--rojo);
-  color: var(--blanco);
+  background-color: var(--h-verde);
+  color: #ffffff;
+  border-radius: 12px;
 }
 
 .btn--whatsapp:hover {
-  background-color: var(--blush);
-  color: var(--negro);
+  background-color: #087a3a;
 }
 
 .detalle__nav {
@@ -924,20 +1048,67 @@ img {
 }
 
 .detalle__flecha {
-  font-family: var(--fuente-display);
-  font-size: 0.9rem;
-  text-transform: uppercase;
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: 0.85rem;
   text-decoration: none;
-  color: var(--blanco);
-  border: var(--borde-fino-blush);
-  border-radius: var(--radio-boton);
+  color: var(--boutique-ink);
+  border: 1px solid var(--boutique-ash);
+  border-radius: 12px;
   padding: 0.5rem 1rem;
-  transition: background-color 0.15s ease, color 0.15s ease;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
 
 .detalle__flecha:hover {
-  background-color: var(--blanco);
-  color: var(--negro);
+  background-color: var(--boutique-ink);
+  color: #ffffff;
+  border-color: var(--boutique-ink);
+}
+
+/* ==========================================================
+   PÁGINA AGENDAS (próximamente) — swatches de la paleta Haryno
+   ========================================================== */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+
+.swatch {
+  background-color: var(--boutique-card);
+  border: 1px solid var(--boutique-ash);
+  border-radius: 12px;
+  padding: 1.4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  text-align: center;
+}
+
+.swatch__chip {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 1px solid rgba(23, 23, 23, 0.08);
+}
+
+.swatch__label {
+  font-family: var(--fuente-boutique);
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--boutique-ink);
+}
+
+.swatch__hex {
+  font-family: var(--fuente-boutique);
+  font-weight: 500;
+  font-size: 0.75rem;
+  color: var(--boutique-iron);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 /* ==========================================================
@@ -1041,6 +1212,164 @@ img {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ==========================================================
+   PÁGINA ESPEJOS (próximamente) — "Liquid Glass"
+   Lienzo blanco + orbes difuminados en la paleta de Haryno Studio
+   (rojo/vino/blush) + tarjeta de vidrio esmerilado.
+   ========================================================== */
+body.pagina-espejos {
+  background-color: #ffffff;
+  color: var(--glass-tinta);
+}
+
+.espejos-hero {
+  position: relative;
+  min-height: calc(100vh - 148px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 4rem 1.5rem;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.6;
+  pointer-events: none;
+  animation: orbFlotar 11s ease-in-out infinite;
+}
+
+.orb--rojo  { width: 320px; height: 320px; background: var(--rojo);           top: -70px;  left: 6%;   animation-delay: 0s; }
+.orb--vino  { width: 260px; height: 260px; background: var(--vino-escenario); top: 8%;     right: 5%;  animation-delay: 1.4s; }
+.orb--coral { width: 220px; height: 220px; background: var(--glass-coral);    bottom: 6%;  left: 3%;   animation-delay: 2.8s; }
+.orb--blush { width: 240px; height: 240px; background: var(--blush);          bottom: -60px; right: 12%; animation-delay: 4.2s; }
+.orb--rosa  { width: 170px; height: 170px; background: var(--glass-rosa);     top: 42%;    left: 44%;  animation-delay: 2s; opacity: 0.35; }
+
+.glass-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 560px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 28px;
+  padding: 3.2rem 2.6rem;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 0 8px 40px rgba(19, 19, 19, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.glass-card__icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  font-size: 1.7rem;
+  color: var(--rojo);
+  background: rgba(225, 6, 0, 0.1);
+  border-radius: 50%;
+  margin-bottom: 0.3rem;
+}
+
+.glass-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-glass);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--rojo);
+  background: rgba(225, 6, 0, 0.08);
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+}
+
+.glass-card__title {
+  font-family: var(--fuente-glass);
+  font-weight: 600;
+  font-size: clamp(2.3rem, 6vw, 3.4rem);
+  letter-spacing: -0.02em;
+  line-height: 0.98;
+  color: var(--glass-tinta);
+}
+
+.glass-card__text {
+  font-family: var(--fuente-glass);
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--glass-acero);
+  max-width: 420px;
+}
+
+.glass-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+  margin-top: 0.6rem;
+}
+
+.btn-glass {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-glass);
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  padding: 0.85rem 1.5rem;
+  border-radius: 14px;
+  transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.btn-glass--primary {
+  background-color: var(--rojo);
+  color: #ffffff;
+}
+
+.btn-glass--primary:hover {
+  background-color: #b80500;
+}
+
+.btn-glass--ghost {
+  background-color: rgba(19, 19, 19, 0.05);
+  color: var(--glass-tinta);
+}
+
+.btn-glass--ghost:hover {
+  background-color: rgba(19, 19, 19, 0.1);
+}
+
+@keyframes orbFlotar {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%      { transform: translate(18px, -22px) scale(1.06); }
+}
+
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 2.4rem 1.6rem;
+    border-radius: 22px;
+  }
+
+  .orb--rosa {
+    display: none;
+  }
+
+  .orb--rojo, .orb--vino, .orb--coral, .orb--blush {
+    filter: blur(50px);
   }
 }
 
